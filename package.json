@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "watch": "node --watch index",
+    "watch": "node --watch --env-file=.env index",
     "dev": "nodemon index"
   },
   "keywords": [],
