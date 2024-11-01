@@ -12,6 +12,7 @@
   "author": "Victor Mwadime <victormwadime@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.1"
   }
 }
