@@ -4,6 +4,7 @@ const path = require("path");
 const indexRouter = Router();
 
 indexRouter.get("/", (req, res) => {
+  console.log(req.customProperty);
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
