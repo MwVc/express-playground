@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+const { Router } = require("express");
+const apiRouter = Router();
 
 // posts in a database example
 let posts = [
@@ -8,8 +8,14 @@ let posts = [
   { id: 3, title: "Post Three" },
 ];
 
+apiRouter.get("/", (req, res) => {
+  res.send(
+    "<h1>You have reached the api</h1> <h3>Get <a href='api/posts'>posts.</a></h3><h3>Go <a href='/'>home.</a></h3>"
+  );
+});
+
 // Get all posts
-router.get("/api/posts", (req, res) => {
+apiRouter.get("/posts", (req, res) => {
   const limit = parseInt(req.query.limit);
   if (!isNaN(limit) && limit > 0) {
     return res.status(200).json(posts.slice(0, limit));
@@ -18,7 +24,7 @@ router.get("/api/posts", (req, res) => {
 });
 
 // Get single post
-router.get("/api/posts/:id", (req, res) => {
+apiRouter.get("/api/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const post = posts.find((post) => post.id === id);
 
@@ -28,4 +34,4 @@ router.get("/api/posts/:id", (req, res) => {
   res.status(200).send(post);
 });
 
-export default router;
+module.exports = apiRouter;
