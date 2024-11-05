@@ -1,17 +1,13 @@
+const { log } = require("console");
 const express = require("express");
-const path = require("path");
-const cors = require("cors");
 const port = process.env.PORT || 8000;
 const app = express();
-const posts = require("./routes/posts");
-// app.use(cors());
+const authorRouter = require("./routes/authorRouter");
+const bookRouter = require("./routes/bookRouter");
+const indexRouter = require("./routes/indexRouter");
 
-// setup static folder
-
-app.use(express.static(path.join(__dirname, "public"))); // middleware - function that runs between the incoming request and the outgoing response
-
-// Routes
-
-// JSON API
+app.use("/", indexRouter);
+app.use("/books", bookRouter);
+app.use("/author", authorRouter);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
